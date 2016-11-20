@@ -51,6 +51,7 @@ Exposed for instance checking.
 ## Related
 
 - [p-some](https://github.com/sindresorhus/p-some) - Wait for a specified number of promises to be fulfilled
+- [p-locate](https://github.com/sindresorhus/p-locate) - Get the first fulfilled promise that satisfies the provided testing function
 - [More…](https://github.com/sindresorhus/promise-fun)
 
 
