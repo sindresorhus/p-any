@@ -4,9 +4,9 @@ import m from './';
 
 test('returns the first fulfilled value', async t => {
 	const f = [
-		Promise.reject(1),
+		Promise.reject(new Error(1)),
 		Promise.resolve(2),
-		Promise.reject(3),
+		Promise.reject(new Error(3)),
 		Promise.resolve(4)
 	];
 	t.deepEqual(await m(f), 2);
