@@ -27,7 +27,7 @@ test('returns the first fulfilled value that passes the filter function', async 
 		Promise.resolve('foo'),
 		Promise.resolve('unicorn')
 	];
-	t.deepEqual(await m(f, val => val === 'unicorn'), 'unicorn');
+	t.deepEqual(await m(f, {filter: val => val === 'unicorn'}), 'unicorn');
 });
 
 test('rejects on empty iterable', async t => {
