@@ -21,6 +21,15 @@ test('returns the first fulfilled value #2', async t => {
 	t.deepEqual(await m(f), 2);
 });
 
+test('returns the first fulfilled value that passes the filter function', async t => {
+	const f = [
+		Promise.resolve(1),
+		Promise.resolve('foo'),
+		Promise.resolve('unicorn')
+	];
+	t.deepEqual(await m(f, val => val === 'unicorn'), 'unicorn');
+});
+
 test('rejects on empty iterable', async t => {
 	await t.throws(m([]), RangeError);
 });
