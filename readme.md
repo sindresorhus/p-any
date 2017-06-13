@@ -35,13 +35,23 @@ pAny([
 
 ## API
 
-### pAny(input)
+### pAny(input, [options])
 
 Returns a `Promise` that is fulfilled when any promise from `input` is fulfilled. If all the `input` promises reject, it will reject with an [`AggregateError`](https://github.com/sindresorhus/aggregate-error) error.
 
 #### input
 
 Type: `Iterable<Promise|any>`
+
+#### options
+
+Type: `Object`
+
+##### filter
+
+Type: `Function`
+
+Receives the value resolved by the promise. Used to filter out values that doesn't satisfy a condition.
 
 ### pAny.AggregateError
 
