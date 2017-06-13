@@ -10,7 +10,7 @@ You probably want this instead of `Promise.race()`. [Reason.](http://bluebirdjs.
 ## Install
 
 ```
-$ npm install --save p-any
+$ npm install p-any
 ```
 
 
