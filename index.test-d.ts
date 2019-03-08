@@ -1,6 +1,6 @@
 import {expectType} from 'tsd-check';
 import pAny, {AggregateError} from '.';
-import {PCancelable} from 'p-cancelable';
+import PCancelable from 'p-cancelable';
 
 expectType<PCancelable<number>>(pAny([Promise.resolve(1)]));
 expectType<PCancelable<number | string>>(

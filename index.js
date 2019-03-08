@@ -3,10 +3,17 @@ const pSome = require('p-some');
 const PCancelable = require('p-cancelable');
 
 const pAny = (iterable, opts) => {
-	const anyCancelable = pSome(iterable, Object.assign({}, opts, {count: 1}));
+	const anyCancelable = pSome(iterable, {...opts, count: 1});
 
 	return new PCancelable((resolve, reject, onCancel) => {
-		anyCancelable.then(([value]) => resolve(value), reject);
+		(async () => {
+			try {
+				const [value] = await anyCancelable;
+				resolve(value);
+			} catch (error) {
+				reject(error);
+			}
+		})();
 
 		onCancel(() => anyCancelable.cancel());
 	});
