@@ -1,5 +1,5 @@
 import AggregateErrorModule = require('aggregate-error');
-import pCancelable = require('p-cancelable');
+import PCancelable from 'p-cancelable';
 import {Options as PSomeOptions} from 'p-some';
 
 type Omit<RecordType, KeyType extends keyof RecordType> = Pick<
@@ -20,6 +20,6 @@ type Options<T> = Omit<PSomeOptions<T>, 'count'>;
 export default function pAny<T>(
 	input: Iterable<Value<T>>,
 	options?: Options<T>
-): pCancelable.PCancelable<T>;
+): PCancelable<T>;
 
 export const AggregateError: typeof AggregateErrorModule;
