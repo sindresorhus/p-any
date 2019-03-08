@@ -1,15 +1,13 @@
-import AggregateErrorModule = require('aggregate-error');
 import PCancelable from 'p-cancelable';
 import {Options as PSomeOptions} from 'p-some';
 
-type Omit<RecordType, KeyType extends keyof RecordType> = Pick<
+export type Omit<RecordType, KeyType extends keyof RecordType> = Pick<
 	RecordType,
 	Exclude<keyof RecordType, KeyType>
 >;
-
-type Value<T> = T | PromiseLike<T>;
-
-type Options<T> = Omit<PSomeOptions<T>, 'count'>;
+export type Value<T> = T | PromiseLike<T>;
+export type Options<T> = Omit<PSomeOptions<T>, 'count'>;
+export type CancelablePromise<ValueType> = PCancelable<ValueType>;
 
 /**
  * Wait for any promise to be fulfilled.
@@ -20,6 +18,6 @@ type Options<T> = Omit<PSomeOptions<T>, 'count'>;
 export default function pAny<T>(
 	input: Iterable<Value<T>>,
 	options?: Options<T>
-): PCancelable<T>;
+): CancelablePromise<T>;
 
-export const AggregateError: typeof AggregateErrorModule;
+export {default as AggregateError} from 'p-some';

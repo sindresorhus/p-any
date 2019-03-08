@@ -1,13 +1,12 @@
 import {expectType} from 'tsd-check';
-import pAny, {AggregateError} from '.';
-import PCancelable from 'p-cancelable';
+import pAny, {AggregateError, CancelablePromise} from '.';
 
-expectType<PCancelable<number>>(pAny([Promise.resolve(1)]));
-expectType<PCancelable<number | string>>(
+expectType<CancelablePromise<number>>(pAny([Promise.resolve(1)]));
+expectType<CancelablePromise<number | string>>(
 	pAny<number | string>([Promise.resolve(1), Promise.resolve('hi')])
 );
 
-expectType<PCancelable<number>>(
+expectType<CancelablePromise<number>>(
 	pAny([Promise.resolve(1)], {
 		filter(number) {
 			expectType<number>(number);
