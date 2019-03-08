@@ -2,8 +2,8 @@
 const pSome = require('p-some');
 const PCancelable = require('p-cancelable');
 
-const pAny = (iterable, opts) => {
-	const anyCancelable = pSome(iterable, {...opts, count: 1});
+const pAny = (iterable, options) => {
+	const anyCancelable = pSome(iterable, {...options, count: 1});
 
 	return new PCancelable((resolve, reject, onCancel) => {
 		(async () => {
