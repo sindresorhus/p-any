@@ -6,7 +6,9 @@ const pAny = (iterable, options) => {
 	const anyCancelable = pSome(iterable, {...options, count: 1});
 
 	return PCancelable.fn(async onCancel => {
-		onCancel(() => anyCancelable.cancel());
+		onCancel(() => {
+			anyCancelable.cancel();
+		});
 
 		const [value] = await anyCancelable;
 		return value;
