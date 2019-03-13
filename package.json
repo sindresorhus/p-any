@@ -39,7 +39,8 @@
 	],
 	"dependencies": {
 		"p-cancelable": "^1.1.0",
-		"p-some": "^4.0.0"
+		"p-some": "^4.0.0",
+		"type-fest": "^0.1.0"
 	},
 	"devDependencies": {
 		"ava": "^1.3.1",

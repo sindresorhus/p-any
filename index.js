@@ -5,18 +5,12 @@ const PCancelable = require('p-cancelable');
 const pAny = (iterable, options) => {
 	const anyCancelable = pSome(iterable, {...options, count: 1});
 
-	return new PCancelable((resolve, reject, onCancel) => {
-		(async () => {
-			try {
-				const [value] = await anyCancelable;
-				resolve(value);
-			} catch (error) {
-				reject(error);
-			}
-		})();
-
+	return PCancelable.fn(async onCancel => {
 		onCancel(() => anyCancelable.cancel());
-	});
+
+		const [value] = await anyCancelable;
+		return value;
+	})();
 };
 
 module.exports = pAny;
