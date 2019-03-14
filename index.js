@@ -1,6 +1,21 @@
 'use strict';
 const pSome = require('p-some');
+const PCancelable = require('p-cancelable');
 
-module.exports = (iterable, opts) => pSome(iterable, Object.assign({}, opts, {count: 1})).then(values => values[0]);
+const pAny = (iterable, options) => {
+	const anyCancelable = pSome(iterable, {...options, count: 1});
+
+	return PCancelable.fn(async onCancel => {
+		onCancel(() => {
+			anyCancelable.cancel();
+		});
+
+		const [value] = await anyCancelable;
+		return value;
+	})();
+};
+
+module.exports = pAny;
+module.exports.default = pAny;
 
 module.exports.AggregateError = pSome.AggregateError;
