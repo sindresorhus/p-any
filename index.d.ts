@@ -10,7 +10,7 @@ export type CancelablePromise<ValueType> = PCancelable<ValueType>;
 Wait for any promise to be fulfilled.
 
 @param input - An `Iterable` collection of promises/values to wait for.
-@returns A `Promise` that is fulfilled when any promise from `input` is fulfilled. If all the input promises reject, it will reject with an [`AggregateError`](https://github.com/sindresorhus/aggregate-error) error.
+@returns A [cancelable `Promise`](https://github.com/sindresorhus/p-cancelable) that is fulfilled when any promise from `input` is fulfilled. If all the input promises reject, it will reject with an [`AggregateError`](https://github.com/sindresorhus/aggregate-error) error.
  */
 export default function pAny<ValueType>(
 	input: Iterable<Value<ValueType>>,

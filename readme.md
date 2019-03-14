@@ -22,14 +22,16 @@ Checks 3 websites and logs the fastest.
 const got = require('got');
 const pAny = require('p-any');
 
-pAny([
-	got.head('github.com').then(() => 'github'),
-	got.head('google.com').then(() => 'google'),
-	got.head('twitter.com').then(() => 'twitter'),
-]).then(first => {
+(async () => {
+	const first = await pAny([
+		got.head('https://github.com').then(() => 'github'),
+		got.head('https://google.com').then(() => 'google'),
+		got.head('https://twitter.com').then(() => 'twitter'),
+	]);
+
 	console.log(first);
 	//=> 'google'
-});
+})();
 ```
 
 

@@ -23,12 +23,12 @@ test('returns the first fulfilled value #2', async t => {
 });
 
 test('returns the first fulfilled value that passes the filter function', async t => {
-	const f = [
+	const fixture = [
 		Promise.resolve(1),
 		Promise.resolve('foo'),
 		Promise.resolve('unicorn')
 	];
-	t.deepEqual(await pAny(f, {filter: value => value === 'unicorn'}), 'unicorn');
+	t.deepEqual(await pAny(fixture, {filter: value => value === 'unicorn'}), 'unicorn');
 });
 
 test('returns a cancelable promise', t => {
