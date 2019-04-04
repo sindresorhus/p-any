@@ -16,6 +16,7 @@ const pAny = (iterable, options) => {
 };
 
 module.exports = pAny;
+// TODO: Remove this for the next major release
 module.exports.default = pAny;
 
 module.exports.AggregateError = pSome.AggregateError;
