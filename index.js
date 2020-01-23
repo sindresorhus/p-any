@@ -10,7 +10,7 @@ const pAny = (iterable, options) => {
 			anyCancelable.cancel();
 		});
 
-		const [value] = await anyCancelable;			
+		const [value] = await anyCancelable;
 		anyCancelable.cancel();
 		return value;
 	})();
