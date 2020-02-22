@@ -6,13 +6,11 @@ Useful when you need the fastest promise.
 
 You probably want this instead of `Promise.race()`. [Reason.](http://bluebirdjs.com/docs/api/promise.race.html)
 
-
 ## Install
 
 ```
 $ npm install p-any
 ```
-
 
 ## Usage
 
@@ -34,10 +32,9 @@ const pAny = require('p-any');
 })();
 ```
 
-
 ## API
 
-### pAny(input, [options])
+### pAny(input, options?)
 
 Returns a [cancelable `Promise`](https://github.com/sindresorhus/p-cancelable) that is fulfilled when any promise from `input` is fulfilled. If all the `input` promises reject, it will reject with an [`AggregateError`](https://github.com/sindresorhus/aggregate-error) error.
 
@@ -47,7 +44,7 @@ Type: `Iterable<Promise|any>`
 
 #### options
 
-Type: `Object`
+Type: `object`
 
 ##### filter
 
@@ -59,14 +56,8 @@ Receives the value resolved by the promise. Used to filter out values that doesn
 
 Exposed for instance checking.
 
-
 ## Related
 
 - [p-some](https://github.com/sindresorhus/p-some) - Wait for a specified number of promises to be fulfilled
 - [p-locate](https://github.com/sindresorhus/p-locate) - Get the first fulfilled promise that satisfies the provided testing function
 - [More…](https://github.com/sindresorhus/promise-fun)
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)

@@ -10,7 +10,7 @@ test('returns the first fulfilled value', async t => {
 		Promise.reject(new Error(3)),
 		Promise.resolve(4)
 	];
-	t.deepEqual(await pAny(fixture), 2);
+	t.is(await pAny(fixture), 2);
 });
 
 test('returns the first fulfilled value #2', async t => {
@@ -19,7 +19,7 @@ test('returns the first fulfilled value #2', async t => {
 		delay(10, {value: 2}),
 		delay(50, {value: 3})
 	];
-	t.deepEqual(await pAny(fixture), 2);
+	t.is(await pAny(fixture), 2);
 });
 
 test('returns the first fulfilled value that passes the filter function', async t => {
@@ -28,7 +28,7 @@ test('returns the first fulfilled value that passes the filter function', async 
 		Promise.resolve('foo'),
 		Promise.resolve('unicorn')
 	];
-	t.deepEqual(await pAny(fixture, {filter: value => value === 'unicorn'}), 'unicorn');
+	t.is(await pAny(fixture, {filter: value => value === 'unicorn'}), 'unicorn');
 });
 
 test('returns a cancelable promise', t => {

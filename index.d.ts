@@ -1,5 +1,4 @@
 import PCancelable = require('p-cancelable');
-import {Omit} from 'type-fest';
 import {
 	Options as PSomeOptions,
 	AggregateError as PSomeAggregateError
@@ -42,9 +41,6 @@ declare const pAny: {
 	): pAny.CancelablePromise<ValueType>;
 
 	AggregateError: typeof PSomeAggregateError;
-
-	// TODO: Remove this for the next major release
-	default: typeof pAny;
 };
 
 export = pAny;
