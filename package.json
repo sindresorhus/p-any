@@ -1,6 +1,6 @@
 {
 	"name": "p-any",
-	"version": "2.1.0",
+	"version": "3.0.0",
 	"description": "Wait for any promise to be fulfilled",
 	"license": "MIT",
 	"repository": "sindresorhus/p-any",
