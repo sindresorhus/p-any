@@ -1,4 +1,4 @@
-# p-any [![Build Status](https://travis-ci.org/sindresorhus/p-any.svg?branch=master)](https://travis-ci.org/sindresorhus/p-any)
+# p-any
 
 > Wait for any promise to be fulfilled
 
