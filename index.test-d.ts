@@ -1,6 +1,5 @@
 import {expectType} from 'tsd';
-import pAny = require('.');
-import {AggregateError, CancelablePromise} from '.';
+import pAny, {AggregateError, CancelablePromise} from './index.js';
 
 expectType<CancelablePromise<number>>(pAny([Promise.resolve(1)]));
 expectType<CancelablePromise<number | string>>(
@@ -16,5 +15,7 @@ expectType<CancelablePromise<number>>(
 	})
 );
 
-const aggregateError = new AggregateError([new Error()]);
+// TODO: TypeScript bug.
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const aggregateError = new AggregateError([new Error('error')]);
 expectType<AggregateError>(aggregateError);

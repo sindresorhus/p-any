@@ -1,7 +1,8 @@
+/* eslint-disable unicorn/error-message */
 import test from 'ava';
 import delay from 'delay';
-import PCancelable from 'p-cancelable';
-import pAny from '.';
+import PCancelable, {CancelError} from 'p-cancelable';
+import pAny from './index.js';
 
 test('returns the first fulfilled value', async t => {
 	const fixture = [
@@ -55,10 +56,10 @@ test('cancels all promises when returned promise is canceled', async t => {
 	const promise = pAny(fixture);
 	promise.cancel();
 
-	await t.throwsAsync(promise, PCancelable.CancelError);
+	await t.throwsAsync(promise, {instanceOf: CancelError});
 	t.deepEqual(canceled, [true, true]);
 });
 
 test('rejects on empty iterable', async t => {
-	await t.throwsAsync(pAny([]), RangeError);
+	await t.throwsAsync(pAny([]), {instanceOf: RangeError});
 });

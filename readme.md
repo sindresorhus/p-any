@@ -19,19 +19,17 @@ $ npm install p-any
 Checks 3 websites and logs the fastest.
 
 ```js
-const got = require('got');
-const pAny = require('p-any');
+import pAny from 'p-any';
+import got from 'got';
 
-(async () => {
-	const first = await pAny([
-		got.head('https://github.com').then(() => 'github'),
-		got.head('https://google.com').then(() => 'google'),
-		got.head('https://twitter.com').then(() => 'twitter'),
-	]);
+const first = await pAny([
+	got.head('https://github.com').then(() => 'github'),
+	got.head('https://google.com').then(() => 'google'),
+	got.head('https://twitter.com').then(() => 'twitter'),
+]);
 
-	console.log(first);
-	//=> 'google'
-})();
+console.log(first);
+//=> 'google'
 ```
 
 ## API
@@ -42,7 +40,7 @@ Returns a [cancelable `Promise`](https://github.com/sindresorhus/p-cancelable) t
 
 #### input
 
-Type: `Iterable<Promise|any>`
+Type: `Iterable<Promise | unknown>`
 
 #### options
 
@@ -54,7 +52,7 @@ Type: `Function`
 
 Receives the value resolved by the promise. Used to filter out values that doesn't satisfy a condition.
 
-### pAny.AggregateError
+### AggregateError
 
 Exposed for instance checking.
 

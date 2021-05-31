@@ -1,8 +1,7 @@
-'use strict';
-const pSome = require('p-some');
-const PCancelable = require('p-cancelable');
+import pSome from 'p-some';
+import PCancelable from 'p-cancelable';
 
-module.exports = (iterable, options) => {
+export default function pAny(iterable, options) {
 	const anyCancelable = pSome(iterable, {...options, count: 1});
 
 	return PCancelable.fn(async onCancel => {
@@ -13,6 +12,6 @@ module.exports = (iterable, options) => {
 		const [value] = await anyCancelable;
 		return value;
 	})();
-};
+}
 
-module.exports.AggregateError = pSome.AggregateError;
+export {AggregateError} from 'p-some';
